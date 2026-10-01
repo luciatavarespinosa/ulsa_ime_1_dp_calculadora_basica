@@ -55,7 +55,17 @@ g++ -Wall -Wextra -std=c++17 main.cpp -o calculadora
 
 ## 7. Ejemplo de ejecución (Fase 3)
 <!-- Pega aquí lo que muestra tu programa en pantalla con una división donde primero escribes 0 como segundo número. -->
-
+Calculadora b├ísica
+Ingresa el primer n├║mero: 1
+Ingresa el segundo n├║mero: 1
+Selecciona una operacion: 
+1.Suma 
+2.Resta 
+3.Multiplicacion 
+4.Division 
+Ingresa tu opci├│n: 1
+El resultado de la suma es: 2
+_____
 ```
 _____
 ```
@@ -65,52 +75,49 @@ _____
 
 | Paso de la receta | Instrucción de C++ que lo implementa |
 |---|---|
-| 1 y 2. Título y menú | _____ |
-| 3. Leer y validar la opción | _____ |
-| 4 y 5. Leer `a` y `b` | _____ |
-| 6. Validar el divisor | _____ |
-| 7. Decisión múltiple (un `case`) | _____ |
-| 8. Mostrar el resultado | _____ |
+| 1 y 2. Título y menú | _cout<< "Calculadora básica\n";____ |
+| 3. Leer y validar la opción | _cout<< "Selecciona una operacion: \n";____ |
+| 4 y 5. Leer `a` y `b` | cout<< "Ingresa el primer número: ";_____ |
+| 6. Validar el divisor | if(numero2 == 0){ cout<< "Error: No se puede dividir entre cero." << endl; | 
+| 7. Decisión múltiple (un case) | switch(opcion){ case 1: |
+| 8. Mostrar el resultado | cout<< "El resultado de la suma es: " |
 
 **¿Hubo algún paso de la receta que te costó traducir a C++? ¿Cuál y por qué?**
-_____
+___La parte del case, para seleccionar la opcion de operación__
 
 ## 9. Experimentos (Fase 3)
 
-**Experimento A: sin el `break` del `case 1`, ¿qué mostró el programa con 8 + 5? ¿Qué te dijo el compilador? ¿Por qué pasó?**
-_____
+Experimento A: sin el break del case 1, ¿qué mostró el programa con 8 + 5? ¿Qué te dijo el compilador? ¿Por qué pasó? Dio el resultado de la suma y de la resta, me advirtió sobre una posible falla, porque el break no detuvo la operacion en la suma y siguio hasta la resta
 
-**Experimento B: sin la validación del Paso 6, ¿qué mostró el programa con 5 / 0? ¿Tiene sentido?**
-_____
+Experimento B: sin la validación del Paso 6, ¿qué mostró el programa con 5 / 0? ¿Tiene sentido? va a mostrar "Error: No se puede dividir entre 0". Si
 
-**Experimento C (opcional): con `a` y `b` de tipo `int`, ¿qué resultado dio 7 / 2? ¿Te avisó el compilador?**
-_____
+Experimento C (opcional): con a y b de tipo int, ¿qué resultado dio 7 / 2? ¿Te avisó el compilador?
 
 ## 10. Tabla de pruebas (Fase 4)
 
 | Caso | Entradas (opción, a, b) | Esperado | Obtenido | ¿Pasó? |
 |---|---|---|---|---|
-| Suma | 1, 8, 5 | 8 + 5 = 13 | _____ | _____ |
-| Resta negativa | 2, 3, 5 | 3 - 5 = -2 | _____ | _____ |
-| Multiplicación con decimales | 3, 2.5, 4 | 2.5 * 4 = 10 | _____ | _____ |
-| Multiplicación con negativo | 3, -3, 4 | -3 * 4 = -12 | _____ | _____ |
-| División | 4, 7, 2 | 7 / 2 = 3.5 | _____ | _____ |
-| Dividendo cero | 4, 0, 5 | 0 / 5 = 0 | _____ | _____ |
-| Divisor cero | 4, 5, 0 (luego 2) | vuelve a pedir `b`; 5 / 2 = 2.5 | _____ | _____ |
-| Suma con cero | 1, 5, 0 | 5 + 0 = 5 (**no** vuelve a pedir `b`) | _____ | _____ |
-| Opción fuera de rango | 5 (luego 1), 8, 5 | vuelve a pedir la opción; 8 + 5 = 13 | _____ | _____ |
-| Opción cero | 0 (luego 1), 8, 5 | vuelve a pedir la opción; 8 + 5 = 13 | _____ | _____ |
-| Opción decimal | 2.5 (luego 2), 3, 5 | `leerEntero` vuelve a pedir; 3 - 5 = -2 | _____ | _____ |
-| Opción con texto | `suma` (luego 1), 8, 5 | `leerEntero` vuelve a pedir; 8 + 5 = 13 | _____ | _____ |
-| Número con texto | 1, `abc` (luego 8), 5 | `leerDecimal` vuelve a pedir; 8 + 5 = 13 | _____ | _____ |
-| Caso propio 1 | _____ | _____ | _____ | _____ |
-| Caso propio 2 | _____ | _____ | _____ | _____ |
+| Suma | 1, 8, 5 | 8 + 5 = 13 | ___13__ | __si___ |
+| Resta negativa | 2, 3, 5 | 3 - 5 = -2 | __-2___ | __si___ |
+| Multiplicación con decimales | 3, 2.5, 4 | 2.5 * 4 = 10 | __10___ | __si___ |
+| Multiplicación con negativo | 3, -3, 4 | -3 * 4 = -12 | __-12___ | ___si__ |
+| División | 4, 7, 2 | 7 / 2 = 3.5 | ___si__ | ____si_ |
+| Dividendo cero | 4, 0, 5 | 0 / 5 = 0 | __si___ | __si___ |
+| Divisor cero | 4, 5, 0 (luego 2) | vuelve a pedir `b`; 5 / 2 = 2.5 | ___si__ | __si___ |
+| Suma con cero | 1, 5, 0 | 5 + 0 = 5 (**no** vuelve a pedir `b`) | __5___ | _____ |
+| Opción fuera de rango | 5 (luego 1), 8, 5 | vuelve a pedir la opción; 8 + 5 = 13 | si_____ | _____ |
+| Opción cero | 0 (luego 1), 8, 5 | vuelve a pedir la opción; 8 + 5 = 13 | __si___ | si_____ |
+| Opción decimal | 2.5 (luego 2), 3, 5 | `leerEntero` vuelve a pedir; 3 - 5 = -2 | me da resta_____ | _____ |
+| Opción con texto | `suma` (luego 1), 8, 5 | `leerEntero` vuelve a pedir; 8 + 5 = 13 | __si___ | _____ |
+| Número con texto | 1, `abc` (luego 8), 5 | `leerDecimal` vuelve a pedir; 8 + 5 = 13 | _si____ | _____ |
+| Caso propio 1 | ___2__ | ___34-56__ | __-22___ | _____ |
+| Caso propio 2 | ___4__ | __87/3___ | __29___ | _____ |
 
 ## 11. Bitácora de mejoras (Fase 4)
 
 | # | ¿Qué falló o qué quise mejorar? | ¿Qué cambié? | ¿Funcionó? |
 |---|---|---|---|
-| 1 | _____ | _____ | _____ |
+| 1 | __lo de los numeros que apareciera el texto ___ | _____ | _____ |
 | 2 | _____ | _____ | _____ |
 
 **¿Encontré algo que la receta no contemplaba? ¿Qué?**
@@ -127,22 +134,22 @@ _____
 ## 13. Reflexión final
 
 **¿Qué aprendí con esta práctica?**
-_____
+_____ah hacer bien el codigo
 
 **Ahora que terminé, ¿qué cambiaría de mi proceso?**
 _____
-
+el modo de entender para hacerl el codigo
 **¿Qué fue lo más difícil y cómo lo resolví?**
-_____
+_____el q no se me olvidara a poner ;  
 
 **¿Qué pregunta me quedó sin responder?**
 _____
-
+ninguna
 **¿Fue más fácil programar a partir de una receta ajena que de la mía? ¿Por qué?**
 _____
-
+apartir de una receta , porque ya nomas era pensar en el codigo 
 **Si yo hubiera diseñado la receta, ¿qué le cambiaría?**
-_____
+_pues q fuera con variables de a y b ____
 
 ## 14. Lista de verificación antes de entregar (Fase 5)
 
